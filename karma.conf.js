@@ -2,12 +2,14 @@ module.exports = function(config) {
   config.set({
     browsers: ['PhantomJS'],
     files: [
-      {pattern: 'test-context.js'}
+      //{pattern: 'test/**/*.js'}
+      //'src/**/*.js',
+      'test/**/*.js',
     ],
 
     frameworks: ['jasmine'],
     preprocessors: {
-      'test-context.js': ['webpack']
+      'test/**/*.js': ['webpack'],
     },
 
     webpack: {
@@ -24,6 +26,16 @@ module.exports = function(config) {
         ]
       },
       watch: true
-    }
+    },
+
+    singleRun: true,
+
+    reporters: ['progress', 'coverage'],
+    coverageReporter: {
+      reporters: [
+        {type: 'html', dir: 'coverage/'},
+        {type: 'text-summary'},
+      ]
+    },
   });
 };

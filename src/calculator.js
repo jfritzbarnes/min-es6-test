@@ -6,4 +6,8 @@ export class Calculator {
     subtract(op1,op2){
         return op1 - op2;
     }
+
+    multiply(op1,op2){
+        return op1 * op2;
+    }
 }
