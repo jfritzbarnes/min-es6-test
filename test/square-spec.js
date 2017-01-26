@@ -22,6 +22,7 @@ describe('Square', () => {
     let snark = square.square(4);
 
     expect(snark).toBe('no one wants to be square');
+    expect(square.getName()).toBe('square');
   });
 
 });

@@ -1,11 +1,19 @@
+function getTestSpecs(specList) {
+  if(specList) {
+    return specList.split(',');
+  } else {
+    return ['test/**/*.js'];
+  }
+}
+
 module.exports = function(config) {
   config.set({
     browsers: ['PhantomJS'],
     files: [
       //{pattern: 'test/**/*.js'}
       //'src/**/*.js',
-      'test/**/*.js',
-    ],
+      //'test/**/*.js',
+    ].concat(getTestSpecs(process.env.KARMA_SPECS)),
 
     frameworks: ['jasmine'],
     preprocessors: {
@@ -31,7 +39,7 @@ module.exports = function(config) {
 
     singleRun: true,
 
-    reporters: ['progress', 'coverage'],
+    reporters: ['progress', 'spec', 'coverage'],
     coverageReporter: {
       reporters: [
         {type: 'html', dir: 'coverage/'},

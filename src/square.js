@@ -5,4 +5,8 @@ export default class Square {
     let c = new Calculator();
     return c.multiply(num, num);
   }
+
+  getName() {
+    return 'square';
+  }
 }
